@@ -40,10 +40,12 @@ const Home = () => {
     }
   };
 
+  let recognition;
+
   const startRecording = () => {
     setIsRecording(true);
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
+    recognition = new SpeechRecognition();
     recognition.interimResults = true;
     recognition.maxAlternatives = 10;
     recognition.continuous = true;
@@ -52,7 +54,6 @@ const Home = () => {
       setUserInput(transcript);
     };
     recognition.start();
-    return recognition;
   };
 
   const stopRecording = () => {
@@ -62,12 +63,12 @@ const Home = () => {
 
   const toggleRecording = () => {
     if (isRecording) {
-      const recognition = startRecording();
-      stopRecording(recognition);
+      stopRecording();
     } else {
-      const recognitioin = startRecording();
+      startRecording();
     }
-  }
+  };
+
 
 ;
 
