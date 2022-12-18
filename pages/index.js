@@ -52,6 +52,7 @@ const Home = () => {
       setUserInput(transcript);
     };
     recognition.start();
+    return recognition;
   };
 
   const stopRecording = () => {
@@ -61,9 +62,10 @@ const Home = () => {
 
   const toggleRecording = () => {
     if (isRecording) {
-      stopRecording();
+      const recognition = startRecording();
+      stopRecording(recognition);
     } else {
-      startRecording();
+      const recognitioin = startRecording();
     }
   }
 
