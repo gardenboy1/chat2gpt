@@ -40,7 +40,13 @@ const Home = () => {
     }
   }
 
-
+  const toggleRecording = () => {
+    if (isRecording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+  }
 
 
 ;
@@ -51,6 +57,7 @@ const Home = () => {
         <title>GPT-3 Writer | buildspace</title>
       </Head>
       <div className="container">
+
         <div className="header">
           <div className="header-title">
             <h1>Pick a topic, get a joke.</h1>
@@ -59,6 +66,11 @@ const Home = () => {
             <h2>Careful—some of these can be quite...pun-ishing.</h2>
           </div>
         </div>
+        
+        <button onClick={toggleRecording}>
+          {isRecording ? 'Stop Recording' : 'Start Recording'}
+        </button>
+
         <div className="prompt-container">
           <textarea placeholder="e.g. penguins" className="prompt-box" value={userInput} onChange={onUserChangedText} onKeyDown={onKeyDown}/>
           <div className="prompt-buttons">
