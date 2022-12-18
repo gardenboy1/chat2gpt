@@ -38,15 +38,7 @@ const Home = () => {
       event.preventDefault();
       callGenerateEndpoint();
     }
-  }
-
-  const toggleRecording = () => {
-    if (isRecording) {
-      stopRecording();
-    } else {
-      startRecording();
-    }
-  }
+  };
 
   const startRecording = () => {
     setIsRecording(true);
@@ -66,6 +58,14 @@ const Home = () => {
     setIsRecording(false);
     recognition.stop();
   };
+
+  const toggleRecording = () => {
+    if (isRecording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+  }
 
 ;
 
