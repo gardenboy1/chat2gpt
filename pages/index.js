@@ -48,6 +48,24 @@ const Home = () => {
     }
   }
 
+  const startRecording = () => {
+    setIsRecording(true);
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 10;
+    recognition.continuous = true;
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      setUserInput(transcript);
+    };
+    recognition.start();
+  };
+
+  const stopRecording = () => {
+    setIsRecording(false);
+    recognition.stop();
+  };
 
 ;
 
