@@ -32,9 +32,14 @@ const Home = () => {
 
   const onUserChangedText = (event) => {
   setUserInput(event.target.value);
-  };
-  
+  }; 
 
+  const onKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      callGenerateEndpoint();
+    }
+  };
 
   const startRecording = () => {
     setIsRecording(true);
@@ -73,7 +78,7 @@ const Home = () => {
       <Head>
         <title>Chat2GPT</title>
       </Head>
-      <div className="container">
+      <div className="container" onKeyDown={onKeyDown}>
 
         <div className="header">
           <div className="header-title">
