@@ -98,7 +98,7 @@ const Home = () => {
           <textarea placeholder="e.g. penguins" className="prompt-box" value={userInput} onChange={onUserChangedText}/>
           <div className="prompt-buttons">
             <a className={isGenerating ? 'generate-button loading' : 'generate-button'} onClick={callGenerateEndpoint}>
-              <div className="generate-button">
+              <div className="generate">
                 {isGenerating ? <span className="loader"></span> : <p>Generate</p>}
               </div>
             </a>
