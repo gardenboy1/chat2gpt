@@ -43,7 +43,7 @@ const Home = () => {
   const startRecording = () => {
     setIsRecording(true);
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    recognition = new SpeechRecognition();
+    let recognition = new SpeechRecognition();
     recognition.interimResults = true;
     recognition.maxAlternatives = 10;
     recognition.continuous = true;
