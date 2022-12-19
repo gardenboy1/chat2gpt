@@ -67,7 +67,7 @@ const Home = () => {
     if (isRecording) {
       stopRecording(recognition);
     } else {
-      startRecording();
+
     }
   };
 
