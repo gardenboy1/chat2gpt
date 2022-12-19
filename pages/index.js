@@ -74,11 +74,11 @@ const Home = () => {
 ;
 
   return (
-    <div className="root">
+    <div className="root" onKeyDown={onKeyDown}>
       <Head>
         <title>Chat2GPT</title>
       </Head>
-      <div className="container" onKeyDown={onKeyDown}>
+      <div className="container">
 
         <div className="header">
           <div className="header-title">
