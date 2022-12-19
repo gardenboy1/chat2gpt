@@ -40,8 +40,6 @@ const Home = () => {
     }
   };
 
-  let recognition;
-
   const startRecording = () => {
     setIsRecording(true);
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
