@@ -39,6 +39,7 @@ const Home = () => {
   if (event.key === 'Enter') {
     event.preventDefault();
     callGenerateEndpoint();
+    };
   };
 
   const startRecording = () => {
