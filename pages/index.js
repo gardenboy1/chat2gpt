@@ -34,11 +34,11 @@ const Home = () => {
   setUserInput(event.target.value);
   };
   
-  const onKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      callGenerateEndpoint();
-    }
+
+  document.addEventListener('keydown', event => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    callGenerateEndpoint();
   };
 
   const startRecording = () => {
