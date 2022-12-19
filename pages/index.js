@@ -32,7 +32,7 @@ const Home = () => {
 
   const onUserChangedText = (event) => {
   setUserInput(event.target.value);
-  }
+  };
   
   const onKeyDown = (event) => {
     if (event.key === 'Enter') {
