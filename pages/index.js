@@ -88,7 +88,7 @@ const Home = () => {
           </div>
         </div>
         
-        <button className="generate" onClick={toggleRecording}>
+        <button className="prompt-buttons" onClick={toggleRecording}>
           {isRecording ? 'Stop Recording' : 'Start Recording'}
         </button>
 
