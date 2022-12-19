@@ -47,7 +47,7 @@ const Home = () => {
     recognition = new SpeechRecognition();
     recognition.interimResults = true;
     recognition.maxAlternatives = 10;
-    recognition.continuous = true;
+    recognition.continuous = false;
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
       setUserInput(transcript);
@@ -67,7 +67,7 @@ const Home = () => {
     if (isRecording) {
       stopRecording(recognition);
     } else {
-
+      startRecording();
     }
   };
 
