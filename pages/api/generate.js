@@ -6,14 +6,14 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const basePromptPrefix = `Man 1: Boy, I'd really love to hear a pun about `;
+const basePromptPrefix = `Write a pun about `;
 const generateAction = async (req, res) => {
   // Run first prompt
   console.log(`API: ${basePromptPrefix}${req.body.userInput}/n`)
 
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: `${basePromptPrefix}${req.body.userInput}${` . /n Man 2: You got it! Here it is:`}`,
+    prompt: `${basePromptPrefix}${req.body.userInput}`,
     temperature: 0.7,
     max_tokens: 250,
   });
