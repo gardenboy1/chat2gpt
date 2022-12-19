@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 
 const Home = () => {
+  let recognition;
   const [userInput, setUserInput] = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const [apiOutput, setApiOutput] = useState('')
@@ -43,7 +44,7 @@ const Home = () => {
   const startRecording = () => {
     setIsRecording(true);
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    let recognition = new SpeechRecognition();
+    recognition = new SpeechRecognition();
     recognition.interimResults = true;
     recognition.maxAlternatives = 10;
     recognition.continuous = true;
