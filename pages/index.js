@@ -29,8 +29,8 @@ const Home = () => {
     setApiOutput(`${output.text}`);
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(apiOutput);
-    synth.speak(utterance);
     setIsGenerating(false);
+    synth.speak(utterance);
   };
   
   if (window.speechSynthesis) {
