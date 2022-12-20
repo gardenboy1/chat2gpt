@@ -38,10 +38,10 @@ const Home = () => {
     const { output } = data;
     console.log("OpenAI replied...", output.text)
 
-    setApiOutput(`${output.text}`);
+    setApiOutput(`${output.text}`).then(() => {
+      synthesizeText(apiOutput):
+    });
     setIsGenerating(false);
-
-    synthesizeText(apiOutput);
 
 };
 
