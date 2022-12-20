@@ -28,11 +28,12 @@ const Home = () => {
 
     setApiOutput(`${output.text}`);
     setIsGenerating(false);
-  };
+  
 
   const synth = window.speechSynthesis;
   const utterance = new SpeechSynthesisUtterance(apiOutput);
   synth.speak(utterance);
+};
 
   const onUserChangedText = (event) => {
   setUserInput(event.target.value);
