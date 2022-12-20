@@ -34,13 +34,14 @@ const Home = () => {
     
     const synth = window.speechSynthesis;
     setSynth(synth);
-  
+
+    const speakOutput = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    synth.speak(utterance);
+    };  
   };  
 
-  const speakOutput = (text) => {
-  const utterance = new SpeechSynthesisUtterance(text);
-  synth.speak(utterance);
-  };
+
 
   const onUserChangedText = (event) => {
   setUserInput(event.target.value);
