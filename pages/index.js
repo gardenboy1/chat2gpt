@@ -30,9 +30,18 @@ const Home = () => {
     setIsGenerating(false);
   
 
-  const synth = window.speechSynthesis;
-  const utterance = new SpeechSynthesisUtterance(apiOutput);
-  synth.speak(utterance);
+ // Read the apiOutput text out loud using the SpeechSynthesis API
+    if (window.speechSynthesis) {
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(apiOutput);
+      utterance.onend = () => {
+        // Synthesize the new text after the previous synthesis has finished
+        synth.speak(utterance);
+      }
+      synth.speak(utterance);
+      } else {
+      console.log('SpeechSynthesis is not supported in this browser');
+      }
 };
 
   const onUserChangedText = (event) => {
