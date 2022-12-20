@@ -57,7 +57,7 @@ const Home = () => {
 
   const stopRecording = () => {
     setIsRecording(false);
-    recognition.abort();
+    recognition.stop();
     recognition = null;
     console.log(recognition);
     console.log('stopRecording called');
