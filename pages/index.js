@@ -32,6 +32,16 @@ const Home = () => {
     synth.speak(utterance);
     setIsGenerating(false);
   };
+  
+  if (window.speechSynthesis) {
+    // Use the SpeechSynthesis API to read the apiOutput text out loud
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(apiOutput);
+    synth.speak(utterance);
+  } else {
+    // The SpeechSynthesis API is not supported in this browser
+    console.log('SpeechSynthesis is not supported in this browser');
+  };
 
   const onUserChangedText = (event) => {
   setUserInput(event.target.value);
