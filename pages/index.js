@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 
@@ -9,7 +9,7 @@ const Home = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [apiOutput, setApiOutput] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
-
+  const [synth, setSynth] = useState(null);
 
 
   const callGenerateEndpoint = async () => {
@@ -29,12 +29,18 @@ const Home = () => {
     console.log("OpenAI replied...", output.text);
 
     setApiOutput(output.text);
+    speakOutput(output.text);
     setIsGenerating(false);
     
+    const synth = window.speechSynthesis;
+    setSynth(synth);
   
   };  
 
-
+  const speakOutput = (text) => {
+  const utterance = new SpeechSynthesisUtterance(text);
+  synth.speak(utterance);
+  };
 
   const onUserChangedText = (event) => {
   setUserInput(event.target.value);
