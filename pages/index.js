@@ -10,16 +10,6 @@ const Home = () => {
   const [apiOutput, setApiOutput] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
 
-  const synthesizeText = (text) => {
-  // Read the text out loud using the SpeechSynthesis API
-  if (window.speechSynthesis) {
-    const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(text);
-    synth.speak(utterance);
-  } else {
-    console.log('SpeechSynthesis is not supported in this browser');
-  }
-};
 
 
   const callGenerateEndpoint = async () => {
@@ -36,12 +26,10 @@ const Home = () => {
 
     const data = await response.json();
     const { output } = data;
-    console.log("OpenAI replied...", output.text)
+    console.log("OpenAI replied...", output.text);
 
-    await setApiOutput(output.text, () => {
-      synthesizeText(apiOutput);
-    });
-      setIsGenerating(false);
+    setApiOutput(output.text);
+    setIsGenerating(false);
     
   
   };  
