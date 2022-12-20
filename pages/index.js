@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { MediaRecorder } from 'window.navigator.mediaDevices';
 import Head from 'next/head';
 import Image from 'next/image';
 
 
 const Home = () => {
   let recognition;
+  let mediaRecorder;
   const [userInput, setUserInput] = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const [apiOutput, setApiOutput] = useState('')
@@ -53,6 +55,17 @@ const Home = () => {
       setUserInput(transcript);
     };
     recognition.start();
+  };
+
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true});
+
+  mediaRecorder = new MediaRecorder(stream);
+
+  mediaRecorder.Start();
+
+  const stopRecording = () => {
+    setIsRecording(false);
+    mediaRecorder.stop();
   };
 
   const stopRecording = () => {
