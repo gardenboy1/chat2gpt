@@ -27,11 +27,12 @@ const Home = () => {
     console.log("OpenAI replied...", output.text)
 
     setApiOutput(`${output.text}`);
-    const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(apiOutput);
     setIsGenerating(false);
-    synth.speak(utterance);
   };
+
+  const synth = window.speechSynthesis;
+  const utterance = new SpeechSynthesisUtterance(apiOutput);
+  synth.speak(utterance);
 
   const onUserChangedText = (event) => {
   setUserInput(event.target.value);
