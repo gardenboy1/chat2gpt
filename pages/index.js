@@ -57,6 +57,13 @@ const Home = () => {
     recognition.start();
   };
 
+  const startRecording = async () => {
+    setIsRecording(true);
+    const stream = await navigatormediaDevices.getUserMedia({ audio: true});
+    mediaRecorder = newMediaRecorder(stream);
+    mediaRecorder.start();
+  };
+
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true});
 
   mediaRecorder = new MediaRecorder(stream);
