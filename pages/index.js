@@ -40,8 +40,9 @@ const Home = () => {
 
     setApiOutput(`${output.text}`).then(() => {
       synthesizeText(apiOutput);
+      setIsGenerating(false);
     });
-    setIsGenerating(false);
+    
 
 };
 
