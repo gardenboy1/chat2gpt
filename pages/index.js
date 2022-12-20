@@ -10,6 +10,18 @@ const Home = () => {
   const [apiOutput, setApiOutput] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
 
+  const synthesizeText = (text) => {
+  // Read the text out loud using the SpeechSynthesis API
+  if (window.speechSynthesis) {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    synth.speak(utterance);
+  } else {
+    console.log('SpeechSynthesis is not supported in this browser');
+  }
+};
+
+
   const callGenerateEndpoint = async () => {
     setIsGenerating(true);
   
@@ -28,20 +40,9 @@ const Home = () => {
 
     setApiOutput(`${output.text}`);
     setIsGenerating(false);
-  
 
- // Read the apiOutput text out loud using the SpeechSynthesis API
-    if (window.speechSynthesis) {
-      const synth = window.speechSynthesis;
-      const utterance = new SpeechSynthesisUtterance(apiOutput);
-      utterance.onend = () => {
-        // Synthesize the new text after the previous synthesis has finished
-        synth.speak(utterance);
-      }
-      synth.speak(utterance);
-      } else {
-      console.log('SpeechSynthesis is not supported in this browser');
-      }
+    synthesizeText(apiOutput);
+
 };
 
   const onUserChangedText = (event) => {
